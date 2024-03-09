@@ -1,4 +1,3 @@
-/* eslint-disable react/display-name */
 import { Container, Title } from './styles'
 
 export type Props = {
