@@ -1,29 +1,37 @@
-import bannerImg from '../../assets/images/street_fighter_6.jpg'
+import { Game } from '../../pages/Home'
 import Button from '../Button'
+import { formataPreco } from '../ProductList'
 import Tag from '../Tag'
 import { Banner, Infos } from './styles'
 
-const Hero = () => (
-  <Banner style={{ backgroundImage: `url(${bannerImg})` }}>
+type Props = {
+  game: Game
+}
+
+const Hero = ({ game }: Props) => (
+  <Banner style={{ backgroundImage: `url(${game.media.cover})` }}>
     <div className="container">
       <div>
-        <Tag>Luta</Tag>
-        <Tag>Windows</Tag>
-        <Tag>PS5</Tag>
+        <Tag>{game.details.category}</Tag>
+        <Tag>{game.details.system}</Tag>
       </div>
       <Infos>
-        <h2>Street Fighter 6</h2>
+        <h2>{game.name}</h2>
         <p>
-          <span>de R$ 299,00</span>
-          por R$ 199,00
+          {game.prices.discount && (
+            <span>De {formataPreco(game.prices.old)}</span>
+          )}
+          {game.prices.current && <>Por {formataPreco(game.prices.current)}</>}
         </p>
-        <Button
-          title="Clique aqui para adicionar este jogo ao carrinho"
-          variant="primary"
-          type={'button'}
-        >
-          Adicionar ao carrinho
-        </Button>
+        {game.prices.current && (
+          <Button
+            title="Clique aqui para adicionar este jogo ao carrinho"
+            variant="primary"
+            type={'button'}
+          >
+            Adicionar ao carrinho
+          </Button>
+        )}
       </Infos>
     </div>
   </Banner>

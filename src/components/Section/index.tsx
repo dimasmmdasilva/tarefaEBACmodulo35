@@ -6,16 +6,13 @@ export type Props = {
   children: JSX.Element
 }
 
-const Section =
-  () =>
-  ({ title, background, children }: Props) =>
-    (
-      <Container background={background}>
-        <div>
-          <Title>{title}</Title>
-          {children}
-        </div>
-      </Container>
-    )
+const Section: React.FC<Props> = ({ title, background, children }: Props) => (
+  <Container background={background}>
+    <div>
+      <Title>{title}</Title>
+      {children}
+    </div>
+  </Container>
+)
 
 export default Section
