@@ -2,7 +2,6 @@ import { useParams } from 'react-router-dom'
 import Hero from '../../components/Hero'
 import Section from '../../components/Section'
 import Gallery from '../../components/Gallery'
-import streetfighter2 from '../../assets/images/street_fighter_6_guile.jpg'
 import { useEffect, useState } from 'react'
 import { Game } from '../Home'
 
@@ -12,7 +11,7 @@ const Product = () => {
   const [game, setGame] = useState<Game>()
 
   useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/eplay/jogos/%{id}`)
+    fetch(`https://fake-api-tau.vercel.app/api/eplay/jogos/${id}`)
       .then((res) => res.json())
       .then((res) => setGame(res))
   }, [id])
